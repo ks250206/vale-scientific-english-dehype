@@ -203,7 +203,7 @@ After: The measured ionic conductivity was X S cm-1 at Y degC, compared with Z S
 .github/styles/**
 ```
 
-GitHub Actions では `vale-cli/vale-action@v2.1.2` を使い、Vale `3.10.0` を実行します。pull request では GitHub の check として結果が表示されます。
+GitHub Actions では `errata-ai/vale-action@v2.1.1` を使い、Vale `3.10.0` を実行します。pull request では GitHub の check として結果が表示されます。
 
 このスタイルのルールは、多くが `warning` または `suggestion` です。`novel`、`robust`、`significant` のような語は文脈によって正当化できるため、初期状態では「確認すべき箇所」として扱います。
 
