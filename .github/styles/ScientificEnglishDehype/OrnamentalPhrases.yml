@@ -1,0 +1,18 @@
+extends: substitution
+message: "Consider using '%s' instead of '%s' unless the longer phrase adds precise meaning."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  'meticulously delv(?:e|es|ed|ing) into': examines|tests|analyzes
+  'delv(?:e|es|ed|ing) into': examines|tests|analyzes
+  'showcas(?:e|es|ed|ing) the effectiveness of': shows|tests|evaluates
+  'intricate interplay': interaction|association|mechanism
+  'pivotal role': role|contribution
+  'comprehensive study': study
+  'leverag(?:e|es|ed|ing)': use|uses|used|using
+  'harness(?:es|ed|ing)?': use|uses|used|using
+  'underscore(?:s|d|ing)?': show|support|highlight
+  'facilitat(?:e|es|ed|ing)': enable|help|allow
+  'elucidat(?:e|es|ed|ing)': clarify|identify|test

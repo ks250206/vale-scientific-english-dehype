@@ -1,0 +1,12 @@
+extends: existence
+message: "'%s' can sound like LLM-style filler. Remove it or replace it with a precise scientific term."
+level: warning
+ignorecase: true
+tokens:
+  - '\bdelv(?:e|es|ed|ing)(?:\s+into)?\b'
+  - '\b(?:pivotal|intricate|meticulous|meticulously|crucial|comprehensive|notably|realm|landscape|multifaceted|nuanced|seamless)\b'
+  - '\bshowcas(?:e|es|ed|ing)\b'
+  - '\bunderscor(?:e|es|ed|ing)\b'
+  - '\binsights?\b'
+  - '\bharness(?:es|ed|ing)?\b'
+  - '\bleverag(?:e|es|ed|ing)\b'

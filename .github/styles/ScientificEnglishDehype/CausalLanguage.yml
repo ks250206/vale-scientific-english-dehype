@@ -1,0 +1,7 @@
+extends: existence
+message: "'%s' is causal language. Use it only with experimental, randomized, or mechanistic evidence; otherwise prefer association language."
+level: warning
+ignorecase: true
+tokens:
+  - '\b(?:drive|drives|drove|driven|prevent|prevents|prevented|cause|causes|caused|lead|leads|led)\s+(?:to|into|from|the|a|an)?\b'
+  - '\b(?:is responsible for|are responsible for|results in|resulted in|gives rise to)\b'

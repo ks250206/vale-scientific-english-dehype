@@ -1,0 +1,6 @@
+extends: existence
+message: "This sentence claims '%s'. Check that nearby text gives data: effect size, CI, p value, sample size, validation, replication, or controls."
+level: suggestion
+ignorecase: true
+tokens:
+  - '\b(?:we found that|we show that|we demonstrated that|our results show|these findings show|these findings suggest|this study shows|this study demonstrates)\b'

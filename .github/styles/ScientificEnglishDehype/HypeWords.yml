@@ -1,0 +1,7 @@
+extends: existence
+message: "Check whether '%s' is supported by concrete evidence. Replace promotional wording with data, comparison, or method details."
+level: warning
+ignorecase: true
+tokens:
+  - '\b(?:outstanding|excellent|remarkable|unprecedented|groundbreaking|innovative|novel|robust|compelling|promising|superior)\b'
+  - '\bsignificant(?:ly)?\b'

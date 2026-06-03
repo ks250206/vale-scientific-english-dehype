@@ -1,0 +1,7 @@
+extends: existence
+message: "'%s' is vague praise. Replace it with an effect size, comparison, validation result, or experimental condition."
+level: warning
+ignorecase: true
+tokens:
+  - '\b(?:high|higher|low|lower|large|larger|small|smaller|fast|faster|slow|slower|substantial|considerable|marked|dramatic)\s+(?:performance|improvement|increase|decrease|enhancement|reduction|effect|change|difference|stability|conductivity|capacity|retention|accuracy)\b'
+  - '\b(?:greatly|substantially|considerably|dramatically|markedly)\s+(?:improved|increased|decreased|reduced|enhanced)\b'

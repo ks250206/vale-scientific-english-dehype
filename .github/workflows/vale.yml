@@ -1,0 +1,41 @@
+name: Vale prose lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.tex'
+      - '**/*.txt'
+      - '.vale.ini'
+      - '.github/styles/**'
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - '**/*.tex'
+      - '**/*.txt'
+      - '.vale.ini'
+      - '.github/styles/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  vale:
+    name: runner / vale
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Vale
+        uses: vale-cli/vale-action@v2.1.2
+        with:
+          version: 3.10.0
+          files: all
+          reporter: github-pr-check
+          fail_on_error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

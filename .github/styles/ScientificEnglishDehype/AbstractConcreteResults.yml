@@ -1,0 +1,6 @@
+extends: existence
+message: "'%s' often signals interpretation without concrete results. In abstracts, prefer numbers, comparisons, methods, or conditions."
+level: suggestion
+ignorecase: true
+tokens:
+  - '\b(?:suggesting the potential of|highlighting the potential of|showcasing the potential of|opens new avenues|paves the way|has important implications|provides valuable insights)\b'

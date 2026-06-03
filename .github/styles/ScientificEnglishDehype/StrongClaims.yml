@@ -1,0 +1,7 @@
+extends: existence
+message: "'%s' is a strong inference verb. Use it only when the study design supports that strength; otherwise use 'suggests', 'is consistent with', or 'was associated with'."
+level: warning
+ignorecase: true
+tokens:
+  - '\b(?:demonstrate|demonstrates|demonstrated|establish|establishes|established|prove|proves|proved|confirm|confirms|confirmed)\b'
+  - '\b(?:reveal|reveals|revealed)\b'
