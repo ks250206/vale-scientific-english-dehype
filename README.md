@@ -11,6 +11,7 @@
 - `demonstrates`, `proves`, `confirms`, `reveals` など、主張の強さを上げる動詞を検出する
 - `drives`, `prevents`, `leads to`, `results in` など、因果を示す表現を検出する
 - abstract で具体的な結果の代わりに promotional なまとめだけになっている箇所を見つける
+- `write-good`, `proselint`, `Readability`, `Google`, `Microsoft`, `alex` の汎用スタイルで、冗長表現、読みやすさ、技術文書寄りの用語、inclusive language も併せて確認する
 - Markdown、LaTeX、plain text の原稿に対してローカルと CI の両方でチェックする
 
 ## ファイル構成
@@ -46,6 +47,12 @@ brew install vale
 
 ```bash
 vale --version
+```
+
+この設定では Vale の公開パッケージも使うため、初回と `.vale.ini` の `Packages` を変更した後にパッケージを同期します。
+
+```bash
+vale sync
 ```
 
 このリポジトリを別の論文リポジトリで使う場合は、次のファイルとディレクトリを論文リポジトリのルートへコピーします。
@@ -130,6 +137,12 @@ pandoc manuscript.docx -t markdown -o build/vale/manuscript.md
 vale build/vale/manuscript.md
 ```
 
+一時ファイルを残さずに、Pandoc の出力をそのまま Vale に渡すこともできます。標準入力にはファイル拡張子がないため、`--ext='.md'` で Markdown として扱わせます。
+
+```bash
+pandoc manuscript.docx -t markdown | vale --ext='.md'
+```
+
 macOS の `textutil` を使って text に変換する例:
 
 ```bash
@@ -201,6 +214,21 @@ level: error
 ```
 
 ワークフロー側では `fail_on_error: true` が設定されているため、`error` が出ると CI が失敗します。
+
+## 追加した汎用スタイル
+
+このスタイルは論文向けの独自ルールに加えて、Vale の汎用パッケージも有効にしています。論文ではすべてを機械的に直すのではなく、検出結果を確認候補として扱ってください。
+
+| パッケージ | 論文での使いどころ | 注意 |
+| --- | --- | --- |
+| `write-good` | 冗長表現、weasel words、cliché、受動態などの確認 | 受動態は Methods などで自然な場合があり、論文ではうるさすぎることがあります |
+| `proselint` | 一般的な英語スタイルの臭い検出 | 論文特有ではないため、専門用語や定型表現でノイズが出ることがあります |
+| `Readability` | 文の長さ、読みやすさ指標の確認 | 数式、化学式、長い化合物名、引用が多い箇所ではノイズが出ます |
+| `Google` | 明快な技術文書寄りの表現の確認 | 論文よりドキュメント向けのため、投稿規定や分野の文体を優先してください |
+| `Microsoft` | 用語、表記、文体の一貫性の確認 | 製品ドキュメント寄りの指摘も含まれます |
+| `alex` | inclusive language の確認 | 論文、申請書、共同研究資料では有用な場合があります |
+
+有効化しているパッケージは `.vale.ini` の `Packages` と `BasedOnStyles` にあります。検出が多すぎる場合は、まず `MinAlertLevel` を `warning` に上げるか、`BasedOnStyles` から一時的に対象パッケージを外して、独自ルールと汎用ルールを分けて確認します。
 
 ## docx を CI で確認したい場合
 
